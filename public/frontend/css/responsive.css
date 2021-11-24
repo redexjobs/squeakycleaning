@@ -1,0 +1,91 @@
+@media (max-width: 767px) {
+	.headerSection{
+		height:auto;
+	}
+	.blue-bg{
+		padding: 40px 15px;
+	}
+	h1 {
+		font-size: 22px;
+	}
+	.SC-partner-logo .col {
+		-ms-flex-preferred-size: 0;
+		flex-basis: initial;
+		-ms-flex-positive: 1;
+		flex-grow: inherit;
+		max-width: 50%;
+		width: 50%;
+	}
+	.SC-partner-logo .col img{
+		margin:0 0 20px;
+	}
+	.SC-see-whatsliveBox .description{
+		height: auto;
+	}
+	.navbar-light .navbar-nav .nav-link {
+		padding: 8px 10px;
+	}
+	.nav-tabs .nav-item {
+		margin-bottom: 10px;
+		display: block;
+		width: 100%;
+	}
+	.SC-fuss-about h4{
+		width:100%;
+	    font-size: 15px;
+		margin-bottom: 30px;
+	}
+	.google-rating p{
+		font-size: 11px;
+	}
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+	.navbar-light .navbar-nav .nav-link {
+		padding: 8px 10px;
+	}
+	.navbar-light .navbar-nav.ml-auto .nav-item:last-child a{
+		width: auto;
+		display: inline-block;
+	}
+	.SC-infoBox {
+		padding: 10px !important;
+	}
+	.SC-infoBox h4{
+		font-size: 16px;
+	}
+	.SC-infoBox p{
+		font-size: 12px;
+	}
+	.nav-tabs .nav-link{
+		margin-right: 15px;
+	}
+	.SC-fuss-about h2 {
+		font-size: 28px;
+	}
+	.SC-fuss-about h4 {
+		width: 100%;
+		font-size: 18px;
+	}
+	.google-rating h3{
+		font-size: 20px;
+	}
+	.google-rating p{
+		font-size: 9px;
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+	.navbar-light .navbar-nav .nav-link {
+		padding: 0 5px;
+	}
+	.SC-fuss-aboutBox h6{
+		font-size: 15px;
+	}
+	.SC-fuss-aboutBox p{
+		font-size: 12px;
+	}
+	.SC-fuss-about h4 {
+		width: 100%;
+		font-size: 24px;
+	}
+}
