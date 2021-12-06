@@ -1,97 +1,100 @@
 @extends('layouts.frontend')
 @section('title', 'Register')
 @section('content')
-<!-- Content Start -->
-		<section class="content">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-10 offset-md-1">
-						<div class="account-content">
-							<div class="row align-items-center justify-content-center">
-								<div class="col-md-7 col-lg-6 login-left">
-									<img src="{{asset('public/frontend/img/login-banner.png') }}" class="img-fluid" alt="Docucare Register">
-								</div>
-								<div class="col-md-12 col-lg-6 login-right">
-									<div class="login-header">
-										<h3>Registration</h3>
+<!-- Main Area Start -->
+<main role="main" class="middle-content-area">
+	<section class="SC-BusinessRegistration py-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-lg-8 col-xl-8">
+					<h5 class="text-center"><a href="{{ url('/') }}">Call us for help registering your business <span>123 456 7890</span></a></h5>
+					<div class="BusinessRegistrationForm gray-bg p-4">
+						<form>
+							<h6>Personal details</h6>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="name">Your name</label>
+										<input type="text" class="form-control" placeholder="Jon Snow" id="name" required="">
 									</div>
-									<form method="POST" action="{{ route('register') }}">
-										@csrf
-										<div class="form-group form-focus">
-											<input id="name" type="text" class="form-control floating @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-											@error('name')
-												<span class="invalid-feedback" role="alert">
-													<strong>{{ $message }}</strong>
-												</span>
-											@enderror
-											<label class="focus-label">Name</label>
-										</div>
-										<div class="form-group form-focus">
-											<input id="email" type="email" class="form-control floating @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-											@error('email')
-												<span class="invalid-feedback" role="alert">
-													<strong>{{ $message }}</strong>
-												</span>
-											@enderror
-											<label class="focus-label">Email</label>
-										</div>
-										<div class="form-group form-focus">
-											<input id="number" type="number" class="form-control floating @error('mobile_no') is-invalid @enderror" name="mobile_no" required autocomplete="mobile no">
-											@error('mobile_no')
-												<span class="invalid-feedback" role="alert">
-													<strong>{{ $message }}</strong>
-												</span>
-											@enderror
-											<label class="focus-label">Mobile Number</label>
-										</div>
-										<div class="form-group form-focus">
-											<input id="password" type="password" class="form-control floating @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-											@error('password')
-												<span class="invalid-feedback" role="alert">
-													<strong>{{ $message }}</strong>
-												</span>
-											@enderror
-											<label class="focus-label">Create Password</label>
-										</div>
-										
-										<div class="form-group form-focus">
-											<input id="password-confirm" type="password" class="form-control floating @error('password_confirmation') is-invalid @enderror" name="password_confirmation" required autocomplete="new-password">
-											<label class="focus-label">Confirm Password</label>
-										</div>
-										
-										<div class="form-group form-focus">
-										    <select id="role" name="role" class="form-control floating" required="">
-												<option value="patient">Patient</option>
-												<option value="doctor">Doctor</option>
-												<option value="trainer">Trainer</option>
-											</select>
-											@error('role')
-												<span class="invalid-feedback" role="alert">
-													<strong>{{ $message }}</strong>
-												</span>
-											@enderror
-											<label class="focus-label">Role</label>
-										</div>
-										
-										<div class="text-right"><a class="forgot-link" href="{{ url('/login') }}">Already have an account?</a>
-										</div>
-										<button class="btn btn-primary btn-block btn-lg login-btn" type="submit">Signup</button>
-										<!--<div class="login-or"><span class="or-line"></span>
-											<span class="span-or">or</span>
-										</div>
-										<div class="row form-row social-login">
-											<div class="col-6"><a href="#" class="btn btn-facebook btn-block"><i class="fab fa-facebook-f mr-1"></i> Login</a>
-											</div>
-											<div class="col-6"><a href="#" class="btn btn-google btn-block"><i class="fab fa-google mr-1"></i> Login</a>
-											</div>
-										</div>-->
-									</form>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="email">Email</label>
+										<input type="email" class="form-control" placeholder="example@gmail.com" id="email" required="">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="phone">Your mobile number</label>
+										<input type="number" class="form-control" placeholder="123 456 7890" id="phone" required="">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="password">Password</label>
+										<input type="password" class="form-control" placeholder="" id="password" required="">
+									</div>
 								</div>
 							</div>
-						</div>
+							
+							<h6>Business details</h6>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="business-name">Business name</label>
+										<input type="text" class="form-control" placeholder="" id="business-name" required="">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="primary-profession">What is your primary profession?</label>
+										<input type="text" class="form-control" placeholder="e.g. Electrician, Plumber, Mechanic" id="primary-profession" required="">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="where-based">Where are you based?</label>
+										<input type="text" class="form-control" placeholder="e.g. Parramatta" id="where-based" required="">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="business-ABN">Business ABN</label>
+										<input type="text" class="form-control" placeholder="" id="business-ABN" required="">
+										<small>Don't have it on hand? <a href="">Lookup my ABN</a></small>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<button type="submit" class="btn btn-primary w-100">Register now</button>
+								</div>
+							</div>	
+						</form>
 					</div>
 				</div>
-			</div>
-		</section>
-		<!-- ./ End of Content -->
+				<div class="col-md-12 col-sm-12 col-lg-4 col-xl-4">
+					<h2>Register your business</h2>
+					<ul class="RegistrationPoints-list">
+						<li><i class="far fa-check-circle"></i> <span>12,000+ jobs each week</span></li>
+						<li><i class="far fa-check-circle"></i> <span>Pick jobs that suit your schedule</span></li>
+						<li><i class="far fa-check-circle"></i> <span>Squeaky Cleaning customers are verified via phone and email</span></li>
+					</ul>
+				</div>
+			</div>	
+		</div>
+	</section>		
+	<section class="SC-get-free-quote py-5 red-bg">
+		<div class="container py-5">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h2 class="text-white">Have sometingto do? Get in done today</h2>
+					<a href="{{ url('/') }}" class="white-btn">Get free quotes</a>
+				</div>
+			</div>	
+		</div>
+	</section>	
+</main>	
+<!-- ./  End of Main Area -->
 @endsection

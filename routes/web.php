@@ -72,12 +72,38 @@ Route::group(['namespace' => 'Admin','prefix' => 'admin','middleware' => ['auth'
 	Route::post('/edit_subscription_action', [AdminController::class, 'edit_subscription_action'])->name('dashboard.edit_subscription_action');
 	Route::get('/delete-subscription/{id}', [AdminController::class, 'delete_subscription'])->name('dashboard.delete_subscription');
 	
+	#BLOG CATEGORY
+	Route::get('/blog-category', [AdminController::class, 'all_blog_category'])->name('dashboard.all_blog_category'); 
+	Route::get('/add-blog-category', [AdminController::class, 'add_blog_category'])->name('dashboard.add_blog_category');
+	Route::post('/add_blog_category_action', [AdminController::class, 'add_blog_category_action'])->name('dashboard.add_blog_category_action');	
+	Route::get('/edit_blog_category/{id}', [AdminController::class, 'edit_blog_category'])->name('dashboard.edit_blog_category');
+	Route::post('/edit_blog_category_action', [AdminController::class, 'edit_blog_category_action'])->name('dashboard.edit_blog_category_action');	
+	Route::get('/blog-category/delete_blog_category/{id}', [AdminController::class, 'delete_blog_category'])->name('dashboard.delete_blog_category'); 
+	
 });
 
 #FRONTEND ROUTES
 	
 	#HOME
 	Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+	
+	Route::get('/sign-in', [App\Http\Controllers\HomeController::class, 'sign_in'])->name('sign_in');
+	
+	Route::get('/services', [App\Http\Controllers\HomeController::class, 'services'])->name('services');
+	Route::get('/car-services-cost', [App\Http\Controllers\HomeController::class, 'car_services_cost'])->name('car_services_cost');
+	Route::get('/cleaner', [App\Http\Controllers\HomeController::class, 'cleaner'])->name('cleaner');
+	Route::get('/inspiration', [App\Http\Controllers\HomeController::class, 'inspiration'])->name('inspiration');
+	Route::get('/indoor-projects', [App\Http\Controllers\HomeController::class, 'indoor_projects'])->name('indoor_projects');
+	Route::get('/outdoor-projects', [App\Http\Controllers\HomeController::class, 'outdoor_projects'])->name('outdoor_projects');
+	Route::get('/lifestyle', [App\Http\Controllers\HomeController::class, 'lifestyle'])->name('lifestyle');
+	Route::get('/professional-services', [App\Http\Controllers\HomeController::class, 'professional_services'])->name('professional_services');
+	Route::get('/weddings', [App\Http\Controllers\HomeController::class, 'weddings'])->name('weddings');
+	Route::get('/blog', [App\Http\Controllers\HomeController::class, 'all_blog'])->name('all_blog');
+	Route::get('/blog-details', [App\Http\Controllers\HomeController::class, 'blog_details'])->name('blog_details');
+	Route::get('/terms-services', [App\Http\Controllers\HomeController::class, 'terms_services'])->name('terms_services');
+	Route::get('/privacy-policy', [App\Http\Controllers\HomeController::class, 'privacy_policy'])->name('privacy_policy');
+	Route::get('/contact-us', [App\Http\Controllers\HomeController::class, 'contact_us'])->name('contact_us');
+	Route::get('/about-us', [App\Http\Controllers\HomeController::class, 'about_us'])->name('about_us');
 		
 	#PAYPAL
 	Route::get('payment', [PayPalController::class, 'payment'])->name('payment');

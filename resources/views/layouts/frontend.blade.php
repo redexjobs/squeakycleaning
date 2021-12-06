@@ -14,12 +14,68 @@
 <link href="{{ asset('public/frontend/css/custom.css') }}" rel="stylesheet">
 <link href="{{ asset('public/frontend/css/responsive.css') }}" rel="stylesheet">
 </head>
-
-<body class="home-page">
+<body class="inner-page">
 	<!-- Header Area Start -->
+	@if(Request::is('/'))
+		<header class="headerSection" style="background: url('{{ asset('public/frontend/images/banner.jpg') }}') no-repeat center center">
+			<!-- Navbar Area Start -->
+			<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+				<div class="container">
+					<a href="{{ url('/') }}" class="logo-img"><img src="{{ asset('public/frontend/images/logo.png') }}" alt="" class="img-fluid" /></a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="collapsibleNavbar">
+						<ul class="navbar-nav mx-auto">
+							<li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Post a job</a></li>
+							<li class="nav-item"><a class="nav-link" href="{{ url('/car-services-cost') }}">Car services Cost</a></li>
+							<li class="nav-item"><a class="nav-link" href="{{ url('/services') }}">Services</a></li>
+							<li class="nav-item"><a class="nav-link" href="{{ url('/inspiration') }}">Inspiration</a></li>
+							<li class="nav-item"><a class="nav-link" href="{{ url('/cleaner') }}">Cleaner</a></li>
+							<li class="nav-item"><a class="nav-link" href="{{ url('/blog') }}">Blog</a></li>
+						</ul>
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item"><a class="nav-link" href="{{ url('/login') }}">Log in</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{ url('/register') }}">Register Business</a></li>
+						</ul>	
+					</div>
+				</div>
+			</nav>
+			<div id="where-to-do-gets-done">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-9 col-sm-9 col-xl-6 col-lg-7 align-self-center">
+							<div class="blue-bg">
+								<h1 class="mb-4 text-white">Where to-do gets done</h1>
+								<form action="">
+									<div class="row">
+										<div class="col-md-9">
+											<div class="form-group">
+												<label for="service">What Service do you need</label>
+												<input type="text" class="form-control" placeholder="eg. Plumber, Cleaner, DJ etc" id="service" required>
+											</div>
+										</div>	
+										<div class="col-md-3">
+											<div class="form-group">	
+												<label for="location">Location</label>
+												<input type="text" class="form-control" placeholder="postecode" id="location" required>
+											</div>
+										</div>	
+									</div>		
+									<button type="submit" class="btn btn-primary"  data-toggle="modal" data-target="#myModal">Get free quotes</button>
+								</form> 
+								
+							</div>
+						</div>	
+					</div>		
+				</div>	
+			</div>	
+		</header>
+	@else
+
 	<header class="headerSection">
 		<!-- Navbar Area Start -->
-		<nav class="navbar navbar-expand-lg navbar-light">
+		<nav class="navbar navbar-expand-lg navbar-light fixed-top">
 			<div class="container">
 				<a href="{{ url('/') }}" class="logo-img"><img src="{{ asset('public/frontend/images/logo.png') }}" alt="" class="img-fluid" /></a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -28,49 +84,26 @@
 				<div class="collapse navbar-collapse" id="collapsibleNavbar">
 					<ul class="navbar-nav mx-auto">
 						<li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Post a job</a></li>
-						<li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Business directory</a></li>
-						<li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Job cost guides</a></li>
-						<li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Inspiration</a></li>
-						<li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Blog</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{ url('/car-services-cost') }}">Car services Cost</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{ url('/services') }}">Services</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{ url('/inspiration') }}">Inspiration</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{ url('/cleaner') }}">Cleaner</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{ url('/blog') }}">blog</a></li>
 					</ul>
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Log in</a></li>
-						<li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Register Business</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{ url('/login') }}">Log in</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{ url('/register') }}">Register Business</a></li>
 					</ul>	
 				</div>
 			</div>
 		</nav>	
 		<!-- End of Navbar Area -->
-		<div id="where-to-do-gets-done">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-9 col-sm-9 col-xl-6 col-lg-7">
-						<div class="blue-bg">
-							<h1 class="mb-4 text-white">Where to-do gets done</h1>
-							<form action="#">
-								<div class="row">
-									<div class="col-md-9">
-										<div class="form-group">
-											<label for="service">What Service do you need</label>
-											<input type="text" class="form-control" placeholder="type service here..." id="service" required>
-										</div>
-									</div>	
-									<div class="col-md-3">
-										<div class="form-group">	
-											<label for="location">Location</label>
-											<input type="password" class="form-control" placeholder="postecode" id="location" required>
-										</div>
-									</div>	
-								</div>		
-								<button type="submit" class="btn btn-primary">Get free quotes</button>
-							</form> 
-						</div>
-					</div>	
-				</div>		
-			</div>	
 		</div>	
 	</header>	
-	<!-- ./ End of Header Area -->
+	<!-- End of Navbar Area -->
+	@endif
+	
+
 		@yield('content')
 		<!-- Footer Area Start -->	
 	<footer class="footer-widget">	
@@ -86,8 +119,8 @@
 								<li><a href="{{ url('/') }}">Post a job</a></li>
 								<li><a href="{{ url('/') }}">Business directory</a></li>
 								<li><a href="{{ url('/') }}">Job cost guides</a></li>
-								<li><a href="{{ url('/') }}">Inspiration</a></li>
-								<li><a href="{{ url('/') }}">Oneflare blog</a></li>
+								<li><a href="{{ url('/inspiration') }}">Inspiration</a></li>
+								<li><a href="{{ url('/blog') }}">Blog</a></li>
 								<li><a href="{{ url('/') }}">Help</a></li>
 							</ul>
 						</div>
@@ -100,7 +133,7 @@
 								</div>
 								<div class="footer-widget-list text-item2">
 									<ul>
-										<li><a href="{{ url('/') }}">Register my business</a></li>
+										<li><a href="{{ url('/register') }}">Register my business</a></li>
 										<li><a href="{{ url('/') }}">Awards</a></li>
 										<li><a href="{{ url('/') }}">Business centre</a></li>
 										<li><a href="{{ url('/') }}">Win work guide</a></li>
@@ -127,12 +160,12 @@
 								</div>
 								<div class="footer-widget-list text-item3">
 									<ul>
-										<li><a href="{{ url('/') }}">About us</a></li>
+										<li><a href="{{ url('/about-us') }}">About us</a></li>
 										<li><a href="{{ url('/') }}">Reviews</a></li>
 										<li><a href="{{ url('/') }}">How it works</a></li>
 										<li><a href="{{ url('/') }}">Our team</a></li>
 										<li><a href="{{ url('/') }}">We're hiring</a></li>
-										<li><a href="{{ url('/') }}">Contact us</a></li>
+										<li><a href="{{ url('/contact-us') }}">Contact us</a></li>
 									</ul>
 								</div>
 							</div>
@@ -157,12 +190,12 @@
 				<hr>
 				<div class="row">
 					<div class="col-md-9"> 
-						<p><strong>Squeaky Cleaning</strong> &copy; Squeaky Cleaning Pty Ltd. All Rights Reserved.</p>
+						<p><strong>Squeaky Cleaning</strong> {{date('Y')}} &copy; Squeaky Cleaning Pty Ltd. All Rights Reserved.</p>
 					</div>
 					<div class="col-md-3"> 
 						<ul>
-							<li><a href="{{ url('/') }}">Terms of use</a></li>
-							<li><a href="{{ url('/') }}">Privacy policy</a></li>
+							<li><a href="{{ url('/terms-services') }}">Terms of use</a></li>
+							<li><a href="{{ url('/privacy-policy') }}">Privacy policy</a></li>
 						</ul>
 					</div>
 				</div>	
@@ -173,8 +206,13 @@
 <!-- Bootstrap core JavaScript
 ================================================== --> 
 <!-- Placed at the end of the document so the pages load faster --> 
+<!-- ./ End Of Footer Area -->	
+<!-- Bootstrap core JavaScript
+================================================== --> 
+<!-- Placed at the end of the document so the pages load faster --> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="{{ asset('public/frontend/js/custom.js') }}"></script>
 </body>
 </html>

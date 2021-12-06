@@ -14,6 +14,7 @@ use Illuminate\Support\Str;
 use file;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Category_blog;
 use App\Models\Setting;
 use App\Models\Services;
 use App\Models\Subscription;
@@ -161,6 +162,17 @@ class AdminController extends Controller
 			$setting->footer_social_media     = $request->footer_social_media;
 			$setting->footer_copyright        = $request->footer_copyright;
 			$setting->footer_contact_details  = $request->footer_contact_details;
+			
+			if(isset($request->home_banner)){
+				$home_banner = time().'.'.$request->home_banner->extension();  
+				$request->home_banner->move(public_path('uploads/setting/'), $home_banner);  
+			}
+			if(isset($request->inner_banner)){
+				$inner_banner = time().'.'.$request->inner_banner->extension();  
+				$request->inner_banner->move(public_path('uploads/setting/'), $inner_banner);  
+			}
+			
+			
 			$setting->save();
 			
 			return redirect('/admin/setting')->with('success', 'You have successfully added!');
@@ -191,6 +203,24 @@ class AdminController extends Controller
 			$settingArray['footer_social_media']     = $request->footer_social_media;
 			$settingArray['footer_copyright']        = $request->footer_copyright;
 			$settingArray['footer_contact_details']  = $request->footer_contact_details;
+			
+			if(isset($request->home_banner)){
+				$home_banner = time().'.'.$request->home_banner->extension();  
+				$request->home_banner->move(public_path('uploads/setting/'), $home_banner);  
+			}
+			if(!empty($home_banner)){
+			  $settingArray['home_banner']    = $home_banner;
+			}
+			
+			if(isset($request->inner_banner)){
+				$inner_banner = time().'.'.$request->inner_banner->extension();  
+				$request->inner_banner->move(public_path('uploads/setting/'), $inner_banner);  
+			}
+			if(!empty($inner_banner)){
+			  $settingArray['inner_banner']    = $inner_banner;
+			}
+			
+			
 			
 			Setting::where('id',$request->setting_id)->update($settingArray);
 			return redirect('/admin/setting')->with('success', 'You have successfully updated!');	
@@ -470,5 +500,72 @@ class AdminController extends Controller
 	public function delete_subscription($subscription_id){
 		Subscription::where('id',$subscription_id)->delete();
 		return redirect('/admin/subscription')->with('success', 'You have successfully deleted!');
+	}
+	
+	#BLOG CATEGORY
+	public function all_blog_category(){		
+		$category_blog = Category_blog::get();
+        return view('admin.blogcategory.blog_category',compact('category_blog'));
+    } 
+	
+	public function add_blog_category(){ 
+        return view('admin.blogcategory.add_blog_category');
+    }
+	
+	public function add_blog_category_action(Request $request){
+		
+		$request->validate([
+            'name'           => ['required','unique:category_blog'],
+            'description'    => ['required'],
+        ]);
+		
+		$slug  = Str::slug($request->name);
+        $count = Category_blog::where('slug',$slug)->count();
+        if($count>0){
+            $slug=$slug.'-'.date('ymdis').'-'.rand(0,999);
+        }
+		
+		$Category_blog = new Category_blog;
+		$Category_blog->name          = $request->name;
+		$Category_blog->slug          = $slug;
+		$Category_blog->description   = $request->description;
+		$Category_blog->save();
+		
+        return redirect('/admin/blog-category')->with('success', 'You have successfully added!');
+    }
+	
+	public function edit_blog_category($category_id){
+		$categoryInfo = Category_blog::where('id',$category_id)->first();
+        return view('admin.blogcategory.edit_blog_category',compact('categoryInfo'));
+	}
+	
+	public function edit_blog_category_action(Request $request){
+		$request->validate([
+            'name'           => ['required'],
+            'description'    => ['required'],
+        ]);
+		
+		$getSlug    = \Str::slug($request->name);
+        $getSlugRes = Category_blog::where('slug',$getSlug)->whereNotIn('id',array($request->category_id))->count();
+        
+        if($getSlugRes>0){
+            return redirect('/admin/blog-category')->with('error', 'This name is all ready taken!!');
+        }
+		
+		$dataArray = array();
+		$dataArray['name']        = $request->name;
+		$dataArray['description'] = $request->description;
+		$dataArray['status']      = $request->status;
+		$dataArray['slug']        = $getSlug;
+		
+		Category_blog::where('id',$request->category_id)->update($dataArray);
+
+        return redirect('/admin/blog-category')->with('success', 'You have successfully updated!');
+    }
+	
+	public function delete_blog_category($category_id){
+		
+		Category_blog::where('id',$category_id)->delete();
+		return redirect('/admin/blog-category')->with('success', 'You have successfully deleted!');
 	}
 }

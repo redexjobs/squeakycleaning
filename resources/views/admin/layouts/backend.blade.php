@@ -75,6 +75,17 @@
 						</ul>
 					</li>
 					
+					<li class="{{ Request::is('admin/add-blog-category') ? 'active' : '' }} {{ Request::is('admin/blog_category') ? 'active' : '' }}"> <a href="#" data-toggle="collapse" data-target="#tablesblogcategory" class="active collapsed" aria-expanded="false"><i class="fas fa-table"></i> <span class="nav-label">Blog Category</span><span class="fa fa-chevron-left pull-right"></span></a>
+						<ul class="sub-menu collapse" id="tablesblogcategory" style="">
+							<li>
+								<a href="{{ asset('admin/add-blog-category')}}"> <i class="far fa-circle"></i> Add Blog Category</a>
+							</li>
+							<li>
+								<a href="{{ asset('admin/blog-category')}}"> <i class="far fa-circle"></i> Blog Categories</a>
+							</li>
+						</ul>
+					</li>
+					
 				</ul>
 			</aside>
 			<div id="navbar-wrapper">

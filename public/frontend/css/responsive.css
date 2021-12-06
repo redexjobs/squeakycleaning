@@ -38,6 +38,82 @@
 	.google-rating p{
 		font-size: 11px;
 	}
+	.SC-hero-bg .white-bg{
+		width: 100%;
+		margin: 35px auto;
+		padding: 15px 10px;
+	}
+	h3 {
+		font-size: 25px;
+	}
+	.SC-MainCitiesStyled {
+		border-bottom: 1px solid #eee;
+		overflow: scroll hidden;
+		white-space: nowrap;
+	}
+	.SC-MainCitiesStyled ul li{
+		padding: 0 8px;
+	}
+	.common-code .card{
+		padding: 20px
+	}
+	.text-muted.pt-5 {
+		padding-top: 0rem !important;
+	}
+	h2 {
+		font-size: 25px;
+	}
+	#myModal .modal-dialog{
+		margin: 0;
+	}
+	#myModal .SC-request-steps{
+		overflow-y: inherit;
+		height: auto;
+	}
+	.btn-email-btn{
+		margin:0;
+		min-width: calc(100% - 8px);
+	}
+	.btn-password-btn{
+		margin: 10px 0;
+		min-width: calc(100% - 8px);
+	}
+	.SC-request-steps #date {
+		width: 100%;
+	}
+	.SC-request-steps #token {
+		width: 12%;
+	}
+	.headerSection .fixed-top {
+		position: relative;
+	}
+	.inner-page .middle-content-area {
+		margin-top: 0;
+	}
+	.SC-NavigationStyled {
+		border-bottom: 1px solid #eee;
+		overflow: scroll hidden;
+		white-space: nowrap;
+	}
+	.SC-NavigationStyled ul li:last-child i {
+		position: relative;
+	}
+	.SC-sign-in .gray-bg .p-5 {
+		padding: 1rem !important;
+	}
+	.remember-me-txt{
+		font-size: 12px;
+	}
+	.forgot-txt{
+		font-size: 12px;
+	}
+	.SC-contact .gray-bg .px{
+		padding-left: 25px !important;
+		padding-right: 25px !important;
+	}
+	ul.social-icon{
+		margin: 0 0 15px;
+	}
 }
 @media (min-width: 768px) and (max-width: 991.98px) {
 	.navbar-light .navbar-nav .nav-link {
@@ -72,6 +148,25 @@
 	.google-rating p{
 		font-size: 9px;
 	}
+	
+	#myModal .SC-request-steps{
+		overflow-y: inherit;
+		height: auto;
+	}
+	.btn-email-btn{
+		margin:0;
+		min-width: calc(50% - 8px);
+	}
+	.btn-password-btn{
+		margin: 10px 0;
+		min-width: calc(50% - 8px);
+	}
+	.SC-request-steps #date {
+		width: 100%;
+	}
+	.SC-request-steps #token {
+		width: 12%;
+	}
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
@@ -87,5 +182,14 @@
 	.SC-fuss-about h4 {
 		width: 100%;
 		font-size: 24px;
+	}
+	.SC-request-steps #token{
+		width: 9%;
+	}
+	.btn-email-btn{
+		min-width: calc(45% - 8px);
+	}
+	.btn-password-btn{
+		min-width: calc(45% - 8px);
 	}
 }

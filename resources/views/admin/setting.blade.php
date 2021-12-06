@@ -154,7 +154,34 @@
 											</span>
 										@enderror
 									</div>
-									 
+									
+									<div class="form-group">
+										<label for="exampleInputEmail1">{{ __('Home banner') }}</label>
+										<input id="files" type="file" class="form-control @error('home_banner') is-invalid @enderror" name="home_banner" placeholder="Header Logo..">
+										@error('home_banner')
+											<span class="invalid-feedback" role="alert">
+												<strong>{{ $message }}</strong>
+											</span>
+										@enderror
+										<br/>
+										@if(isset($settingInfo->home_banner))
+										   <img src="{{ asset('public/uploads/setting/') }}/{{ $settingInfo->home_banner }}" height="70">
+										@endif
+									</div>
+									
+									<div class="form-group">
+										<label for="exampleInputEmail1">{{ __('Inner page banner') }}</label>
+										<input id="files" type="file" class="form-control @error('inner_banner') is-invalid @enderror" name="inner_banner" placeholder="Header Logo..">
+										@error('inner_banner')
+											<span class="invalid-feedback" role="alert">
+												<strong>{{ $message }}</strong>
+											</span>
+										@enderror
+										<br/>
+										@if(isset($settingInfo->inner_banner))
+										   <img src="{{ asset('public/uploads/setting/') }}/{{ $settingInfo->inner_banner }}" height="70">
+										@endif
+									</div>
 								</div>
 								<!-- /.box-body -->
 								<div class="box-footer">
